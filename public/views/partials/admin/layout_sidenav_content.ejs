@@ -1,0 +1,124 @@
+<div id="layoutSidenav_content">
+    <main class="">
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Lista de Productos</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Tienda Las Nubes</li>
+            </ol>
+
+            <!--Cards Productos-->
+            <div id="cardsProductos" class="">
+                <% for(var prod = 0; prod < productoTienda.length; prod++) { %>
+                    <div class="card mb-3" id="producto<%=productoTienda[prod].idProducto%>" productoId="<%=productoTienda[prod].idProducto%>">
+                        <div class="row card-body align-items-center">
+                            <div class="col-md-3">
+                                <img src="<%= productoTienda[prod].imagen %>" class="img-fluid rounded mx-auto d-block"
+                                    alt="Market" style="max-width:70%" id="imagen<%= prod %>">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="nombre<%= prod %>">
+                                        <%= productoTienda[prod].nombre %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <small class="text-muted" id="desc<%= prod %>">
+                                            <%= productoTienda[prod].descripcion %>
+                                        </small>
+                                    </p>
+                                    <p class="card-text">
+                                        <span>S/.</span>
+                                        <span id="precio<%= prod %>">
+                                            <%= productoTienda[prod].precio %>
+                                        </span>
+                                        <span>.00 /u</span>
+                                    </p>
+                                    <button class="btn btn-primary" id="idbutton<%=productoTienda[prod].idProducto%>editar" productoIndex="<%= prod %>" productoId = "<%=productoTienda[prod].idProducto%>" tiendaId = "<%=productoTienda[prod].idTienda%>" data-bs-toggle="modal" data-bs-target="#modalEditar">Editar Producto</button>
+                                    <button class="btn btn-primary" id="idbutton<%=productoTienda[prod].idProducto%>borrar" productoIndex="<%= prod %>" productoId = "<%=productoTienda[prod].idProducto%>" tiendaId = "<%=productoTienda[prod].idTienda%>" data-bs-toggle="modal" data-bs-target="#modalBorrar">Borrar Producto</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+
+            <!--Modal Editar Producto-->
+            <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Nombre del producto</label>
+                                    <input type="text" class="form-control" id="inputNombre" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Imagen (URL)</label>
+                                    <input type="text" class="form-control" id="inputImagen">
+                                </div>
+                                <div class="alert alert-danger" role="alert" id="mensajeURLE">
+                                    URL no válida
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Descripción</label>
+                                    <input type="text" class="form-control" id="inputDesc">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Precio</label>
+                                    <input type="number" class="form-control" id="inputPrecio" min="0" max="999">
+                                </div>
+                            </form>
+        
+                            <div class="d-grid gap-2 mt-2">
+                                <button class="btn btn-primary" role="button" id="butActualizar">Actualizar Producto</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
+            <!--Modal Eliminar Producto-->
+            <div class="modal fade" id="modalBorrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Borrar Producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Está seguro de eliminar este producto?</p>
+        
+                            <div class="d-grid gap-2 mt-2">
+                                <button class="btn btn-primary" role="button" id="butEliminar">Eliminar Producto</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Universidad de Lima 2021</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="../../../js/layout_sidenav_content.js"></script>

@@ -1,0 +1,22 @@
+<div class=" d-flex mt-3 w-100 justify-content-center">
+  <div class="d-none d-md-block w-50 borderLeft bgSecondColor"></div>
+  <form class="d-flex px-5 py-5 borderRight flex-column justify-content-center bgWhite" action="/login" method="post">
+    <h2 class="mx-3 firstColor">Bienvenido</h2>
+    <p class="mx-3">Te estabamos esperando</p>
+    <div class="mb-1 mx-3 text-danger" id="loginMessage"></div>
+    <div class="form-group py-3 mx-3">
+      <label class="fontBold fontUpper" for="loginInputCorreo">Correo</label>
+      <input type="email" class="border-0 pt-2  border-bottom form-control" id="loginInputCorreo"
+        aria-describedby="emailHelp" placeholder="Ingrese su correo">
+    </div>
+    <div class="form-group pb-3 mx-3">
+      <label class="fontBold fontUpper" for="loginInputPassword">Contraseña</label>
+      <input type="password" class="border-0 pt-2 border-bottom form-control" id="loginInputPassword"
+        placeholder="*********">
+    </div>
+    <button type="submit" id="loginButton"
+      class="btn text-white fontBold mx-3 mb-4 bgFirstColor border-0 rounded">Ingresar</button>
+    <p class="text-center">No tienes una cuenta?</p>
+    <a href="/register" class="text-center firstColor font-weight-bold mb-5">Es momento de crearse una!</a>
+  </form>
+</div>
