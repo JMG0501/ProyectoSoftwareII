@@ -76,7 +76,7 @@ app.get('/:id/productos', async function(req, res) {
     });
 });
 
-// 4. Panel de Control Administrador
+// 4. Panel de Control Administrador - Productos - Index
 app.get('/:id/admin_index', async function(req, res) {
     const productoTiendaId = req.params.id;
     const listaProductoTiendaDB = await ProductoTiendaDAO.getProductoTienda(parseInt(productoTiendaId));
@@ -99,13 +99,33 @@ app.get('/:id/admin_index', async function(req, res) {
     });
 });
 
-// 5. Actualización de Productos
+// 5. Panel de Control Administrador - Pedidos
+app.get('/:id/admin_pedidos', async function(req, res) {
+    const pedidoTiendaId = req.params.id;
+    const listaPedidoTiendaDB = await PedidoUsuarioDAO.getPedidoTienda(parseInt(pedidoTiendaId));
+    const listaPedidoTienda = [];
+    for (let object of listaPedidoTiendaDB)
+    {
+        listaPedidoTienda.push({
+            idPedido: object.id,
+            idCliente: object.idUsuario,
+            fecha: object.createdAt,
+            monto: object.total,
+        })
+    }
+
+    res.render('pages/admin_pedidos', {
+        pedidoTienda: listaPedidoTienda,
+    });
+});
+
+// 6. Actualización de Productos
 app.put("/producto_tienda", ProductoTiendaDAO.put);
 
-// 5. Eliminación de Productos
+// 7. Eliminación de Productos
 app.delete("/producto_tienda/:idProducto/:idTienda", ProductoTiendaDAO.delete);
 
-// 6. Login
+// 8. Login
 app.get("/login", (req,res)=>{
     res.render('pages/login');
 })
@@ -113,7 +133,7 @@ app.post("/login",(req,res)=>{
     login.get(req,res);
 })
 
-// 7. Registro
+// 9. Registro
 app.get("/register",(req,res)=>{
     res.render('pages/register');
 });
@@ -122,17 +142,36 @@ app.post("/register", (req,res)=>{
     registro.post(req,res);
 });
 
-// 8. Checkout
+// 10. Checkout
 app.get('/checkout', function(req, res) {
     res.render('pages/checkout');
 });
 
-// 9. Pedido-Usuario
+// 11. Pedido-Usuario
 app.post("/usuario_pedido", PedidoUsuarioDAO.post);
 
-// 9. Pedido-Producto
+// 12. Pedido-Producto
 app.post("/pedido_producto", PedidoProductoDAO.post);
 
+// 13. Panel de Control Usuario - Pedidos
+app.get('/:id/user_pedidos', async function(req, res) {
+    const pedidoUsuarioId = req.params.id;
+    const listaPedidoUsuarioDB = await PedidoUsuarioDAO.getPedidoUsuario(parseInt(pedidoUsuarioId));
+    const listaPedidoUsuario = [];
+    for (let object of listaPedidoUsuarioDB)
+    {
+        listaPedidoUsuario.push({
+            idPedido: object.id,
+            idTienda: object.idTienda,
+            fecha: object.createdAt,
+            monto: object.total,
+        })
+    }
+
+    res.render('pages/user_pedidos', {
+        pedidoUsuario: listaPedidoUsuario,
+    });
+});
 
 // Depuración en consola
 app.listen(PORT, () =>

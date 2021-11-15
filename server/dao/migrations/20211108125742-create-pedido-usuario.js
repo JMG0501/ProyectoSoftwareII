@@ -11,6 +11,9 @@ module.exports = {
       idUsuario: {
         type: Sequelize.INTEGER
       },
+      idTienda: {
+        type: Sequelize.INTEGER
+      },
       subtotal: {
         type: Sequelize.INTEGER
       },

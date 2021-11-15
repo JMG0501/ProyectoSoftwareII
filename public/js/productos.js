@@ -9,7 +9,6 @@ var pedidoPreliminar = [];
 // Variable Conteo Botones
 // var cantidadBotones = 0;
 // Local Storage
-// localStorage.setItem("idUsuario", 1);
 
 const butAgregarProductoOnClick = (e) => {
     var numID = e.target.getAttribute("idbutton");
@@ -82,6 +81,7 @@ const generarPedidoPreliminar = () =>
     var idProducto, idTienda, cantidad, monto, nombreProducto
     var carritoCompras = document.getElementById("tbody");
     var elemento = carritoCompras.firstElementChild;
+    localStorage.setItem("idTienda", elemento.getAttribute("idTienda"));
 
     for (let i = 0; i < carritoCompras.children.length; i++) 
     {

@@ -67,6 +67,7 @@ const confirmarPedido = async () =>
     body1 =
     {
         idUsuario: localStorage.getItem("idUsuario"),
+        idTienda: localStorage.getItem("idTienda"),
         subtotal: localStorage.getItem("subtotalPreliminar"),
         costoEnvio: 5,
         total: parseInt(localStorage.getItem("subtotalPreliminar"))+5 

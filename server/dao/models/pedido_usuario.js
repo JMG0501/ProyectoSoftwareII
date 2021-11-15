@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Pedido_Usuario.init({
     idUsuario: DataTypes.INTEGER,
+    idTienda: DataTypes.INTEGER,
     subtotal: DataTypes.INTEGER,
     costoEnvio: DataTypes.INTEGER,
     total: DataTypes.INTEGER

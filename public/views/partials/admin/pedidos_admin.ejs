@@ -1,0 +1,76 @@
+<div id="layoutSidenav_content">
+    <main class="">
+        <div class="container-fluid px-4">
+            <!--Titulo de Sección-->
+            <h1 class="mt-4">Pedidos</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Tienda Las Nubes</li>
+            </ol>
+
+            <!--Tabla de Pedidos-->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Base de Datos
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>ID Cliente</th>
+                                <th>Fecha de Creación</th>
+                                <th>Monto Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>ID Cliente</th>
+                                <th>Fecha de Creación</th>
+                                <th>Monto Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% for(var pedido = 0; pedido < pedidoTienda.length; pedido++) { %>
+                                <tr>
+                                    <td class="align-middle"><%= pedidoTienda[pedido].idPedido %></td>
+                                    <td class="align-middle"><%= pedidoTienda[pedido].idCliente %></td>
+                                    <td class="align-middle"><%= pedidoTienda[pedido].fecha %></td>
+                                    <td class="align-middle text-center">S/. <%= pedidoTienda[pedido].monto %>.00</td>
+                                    <td class="align-middle text-center">
+                                        <div class="badge bg-warning rounded-pill">Pendiente<div>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <a class="nav-link" href="" style="color: rgb(0, 0, 0)">
+                                            <div class="sb-nav-link-icon"><i class="fas fa-pencil-alt"></i></div>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>    
+        </div> 
+    </main>
+
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Universidad de Lima 2021</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="../../../js/productos_admin.js"></script>
