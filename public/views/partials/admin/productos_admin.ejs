@@ -2,9 +2,10 @@
     <main class="">
         <div class="container-fluid px-4">
             <h1 class="mt-4">Productos</h1>
-            <ol class="breadcrumb mb-4">
+            <ol class="breadcrumb mb-3">
                 <li class="breadcrumb-item active">Tienda Las Nubes</li>
             </ol>
+            <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar Nuevo Producto</button>
 
             <!--Cards Productos-->
             <div id="cardsProductos" class="">
@@ -106,6 +107,50 @@
                     </div>
                 </div>
             </div>
+
+            <!--Modal Agregar Nuevo Producto-->
+            <div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Nombre del producto</label>
+                                    <input type="text" class="form-control" id="inputNombreA" aria-describedby="emailHelp" placeholder="Ingrese Nombre del Producto">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Imagen (URL)</label>
+                                    <input type="text" class="form-control" id="inputImagenA" placeholder="Ingrese URL de la Imagen del Producto">
+                                </div>
+                                <div class="alert alert-danger" role="alert" id="mensajeURLEA">
+                                    URL no válida
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Descripción</label>
+                                    <input type="text" class="form-control" id="inputDescA" placeholder="Ingrese Descripción del Producto">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Precio</label>
+                                    <input type="number" class="form-control" id="inputPrecioA" min="0" max="999" value="0">
+                                </div>
+                            </form>
+        
+                            <div class="d-grid gap-2 mt-2">
+                                <button class="btn btn-primary" role="button" id="butAgregar">Agregar Producto</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div> 
     </main>
     <footer class="py-4 bg-light mt-auto">

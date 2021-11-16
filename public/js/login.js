@@ -45,6 +45,7 @@ const handleClick = async (e) => {
     if(user.esAdmin==1){
       //redireccionar a perfil de admin
       location.href=`${user.idTienda}/admin_index`;
+      localStorage.setItem("idTienda", user.idTienda)
     }else{
       //redireccionar a tienda
       localStorage.setItem("idUsuario", user.id)

@@ -1,5 +1,4 @@
 var productoIDGlobal = null;
-var tiendaIDGlobal = null;
 
 const rellenarValoresActualesForm = (e) =>
 {
@@ -10,7 +9,6 @@ const rellenarValoresActualesForm = (e) =>
     var precio = document.getElementById("precio"+productoIndex);
 
     productoIDGlobal = e.target.getAttribute("productoId");
-    tiendaIDGlobal = e.target.getAttribute("tiendaId");
 
     document.getElementById("inputNombre").value = nombre.innerText;
     document.getElementById("inputImagen").value = imagen.getAttribute("src");
@@ -25,7 +23,7 @@ const actualizarProducto = async () =>
     const nuevaDesc = document.getElementById("inputDesc").value;
     const nuevoPrecio = document.getElementById("inputPrecio").value;
     const idProductoM = productoIDGlobal;
-    const idTiendaM = tiendaIDGlobal;
+    const idTiendaM = localStorage.getItem("idTienda");
     const validacionURL = /^(ftp|http|https):\/\/[^ "]+$/;
 
     if (validacionURL.test(nuevaImagen)) 
@@ -83,7 +81,7 @@ const asignarOnClickBotonEditar = () =>
 const eliminarProducto = async () =>
 {
     const idProductoE = productoIDGlobal;
-    const idTiendaE = tiendaIDGlobal;
+    const idTiendaE = localStorage.getItem("idTienda");
 
     const resp = await fetch(`http://localhost:3000/producto_tienda/${idProductoE}/${idTiendaE}`, {method : "DELETE"});
     const Data = await resp.json();
@@ -97,12 +95,58 @@ const eliminarProducto = async () =>
     }
 }
 
+const agregarProducto = async () =>
+{
+    const nuevoNombre = document.getElementById("inputNombreA").value;
+    const nuevaImagen = document.getElementById("inputImagenA").value;
+    const nuevaDesc = document.getElementById("inputDescA").value;
+    const nuevoPrecio = document.getElementById("inputPrecioA").value;
+    const idTiendaM = localStorage.getItem("idTienda");
+    const validacionURL = /^(ftp|http|https):\/\/[^ "]+$/;
+
+    if (validacionURL.test(nuevaImagen)) 
+    {
+        document.getElementById("mensajeURLEA").style.display = "none";
+        
+        var cuerpoPeticion = 
+        {
+            idTienda: idTiendaM,
+            nombre: nuevoNombre,
+            imagen: nuevaImagen,
+            descripcion: nuevaDesc,
+            precio: nuevoPrecio
+        }
+    
+        fetch(`http://localhost:3000/producto_tienda`, {
+            method : "POST",
+            body : JSON.stringify(cuerpoPeticion),
+            headers : {"Content-Type" : "application/json"}
+        }).then((resp) => {
+            resp.json().then((data)=> {
+                if (data.msg == "") 
+                {
+                    location.reload();
+                }else 
+                {
+                    console.log("Error al crear producto")
+                }
+            })
+        })
+    }
+    else
+    {
+        document.getElementById("mensajeURLEA").style.display = "";
+    }
+}
+
 function main() 
 {
     asignarOnClickBotonEditar();
     document.getElementById('butActualizar').addEventListener('click', actualizarProducto);
     document.getElementById('butEliminar').addEventListener('click', eliminarProducto);
+    document.getElementById('butAgregar').addEventListener('click', agregarProducto);
     document.getElementById("mensajeURLE").style.display = "none";
+    document.getElementById("mensajeURLEA").style.display = "none";
 }
 
 window.addEventListener("load", main);

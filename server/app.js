@@ -25,13 +25,13 @@ app.use(express.static("public/views/pages"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 
-// 1. Pagina Principal
+// Pagina Principal
 app.get('/pagina_principal', function(req, res) {
     // Render del archivo pagina_principal.ejs [public\views\pages\pagina_principal.ejs]
     res.render('pages/pagina_principal');
 });
 
-// 2. Tiendas
+// Tiendas
 app.get('/tiendas', async function(req, res) {
     // Creación de const[arreglo] que obtiene los registros de la tabla 'Tienda' de la BD
     const listaTiendas = await TiendaDAO.getAll()
@@ -47,7 +47,7 @@ app.post('/tiendas', (req,res)=>{
     TiendaDAO.post(req,res);
 });
 
-// 3. Productos
+// Productos
 app.get('/:id/productos', async function(req, res) {
     // Creación de const[int] que obtiene el idTienda enviado dentro de la ruta '/productos/:id'
     const productoTiendaId = req.params.id;
@@ -76,7 +76,7 @@ app.get('/:id/productos', async function(req, res) {
     });
 });
 
-// 4. Panel de Control Administrador - Productos - Index
+// Panel de Control Administrador - Productos - Index
 app.get('/:id/admin_index', async function(req, res) {
     const productoTiendaId = req.params.id;
     const listaProductoTiendaDB = await ProductoTiendaDAO.getProductoTienda(parseInt(productoTiendaId));
@@ -99,7 +99,7 @@ app.get('/:id/admin_index', async function(req, res) {
     });
 });
 
-// 5. Panel de Control Administrador - Pedidos
+// Panel de Control Administrador - Pedidos
 app.get('/:id/admin_pedidos', async function(req, res) {
     const pedidoTiendaId = req.params.id;
     const listaPedidoTiendaDB = await PedidoUsuarioDAO.getPedidoTienda(parseInt(pedidoTiendaId));
@@ -119,13 +119,16 @@ app.get('/:id/admin_pedidos', async function(req, res) {
     });
 });
 
-// 6. Actualización de Productos
+// Actualización de Productos
 app.put("/producto_tienda", ProductoTiendaDAO.put);
 
-// 7. Eliminación de Productos
+// Agregación de Productos
+app.post("/producto_tienda", ProductoTiendaDAO.post);
+
+// Eliminación de Productos
 app.delete("/producto_tienda/:idProducto/:idTienda", ProductoTiendaDAO.delete);
 
-// 8. Login
+// Login
 app.get("/login", (req,res)=>{
     res.render('pages/login');
 })
@@ -133,7 +136,7 @@ app.post("/login",(req,res)=>{
     login.get(req,res);
 })
 
-// 9. Registro
+// Registro
 app.get("/register",(req,res)=>{
     res.render('pages/register');
 });
@@ -142,18 +145,18 @@ app.post("/register", (req,res)=>{
     registro.post(req,res);
 });
 
-// 10. Checkout
+// Checkout
 app.get('/checkout', function(req, res) {
     res.render('pages/checkout');
 });
 
-// 11. Pedido-Usuario
+// Pedido-Usuario
 app.post("/usuario_pedido", PedidoUsuarioDAO.post);
 
-// 12. Pedido-Producto
+// Pedido-Producto
 app.post("/pedido_producto", PedidoProductoDAO.post);
 
-// 13. Panel de Control Usuario - Pedidos
+// Panel de Control Usuario - Pedidos
 app.get('/:id/user_pedidos', async function(req, res) {
     const pedidoUsuarioId = req.params.id;
     const listaPedidoUsuarioDB = await PedidoUsuarioDAO.getPedidoUsuario(parseInt(pedidoUsuarioId));
