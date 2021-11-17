@@ -111,6 +111,7 @@ app.get('/:id/admin_pedidos', async function(req, res) {
             idCliente: object.idUsuario,
             fecha: object.createdAt,
             monto: object.total,
+            estado: object.estado
         })
     }
 
@@ -150,8 +151,11 @@ app.get('/checkout', function(req, res) {
     res.render('pages/checkout');
 });
 
-// Pedido-Usuario
+// Pedido-Usuario - Generación de Pedido
 app.post("/usuario_pedido", PedidoUsuarioDAO.post);
+
+// Pedido-Usuario - Actualizar Estado
+app.put("/usuario_pedido", PedidoUsuarioDAO.put);
 
 // Pedido-Producto
 app.post("/pedido_producto", PedidoProductoDAO.post);
@@ -168,6 +172,7 @@ app.get('/:id/user_pedidos', async function(req, res) {
             idTienda: object.idTienda,
             fecha: object.createdAt,
             monto: object.total,
+            estado: object.estado
         })
     }
 
