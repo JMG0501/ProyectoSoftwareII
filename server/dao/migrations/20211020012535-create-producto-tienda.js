@@ -5,7 +5,6 @@ module.exports = {
       id: {
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
         type: Sequelize.INTEGER
       },
       idTienda: {
@@ -26,9 +25,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       precio: {
-        type: Sequelize.INTEGER
-      },
-      stock: {
         type: Sequelize.INTEGER
       },
       createdAt: {

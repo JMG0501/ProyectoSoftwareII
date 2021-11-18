@@ -37,20 +37,13 @@
                                         </small>
                                     </p>
                                     <p class="card-text">
-                                        <span>Stock Disponible: </span>
-                                        <span id="stock<%= prod %>">
-                                            <%= productoTienda[prod].stock %>
-                                        </span>
-                                        <span>unidades</span>
-                                    </p>
-                                    <p class="card-text">
                                         <span>S/.</span>
                                         <span>
                                             <%= productoTienda[prod].precio %>
                                         </span>
                                         <span>.00 /u</span>
                                     </p>
-                                    <button class="btn btn-success" idbutton="<%=productoTienda[prod].idProducto%>" id="idbutton<%=productoTienda[prod].idProducto%>" idTienda="<%=productoTienda[prod].idTienda%>" idProducto="<%=productoTienda[prod].idProducto%>" stock="<%= productoTienda[prod].stock %>">Agregar Producto</button>
+                                    <button class="btn btn-success" idbutton="<%=productoTienda[prod].idProducto%>" id="idbutton<%=productoTienda[prod].idProducto%>">+</button>
                                 </div>
                             </div>
                         </div>
