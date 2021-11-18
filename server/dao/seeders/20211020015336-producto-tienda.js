@@ -11,6 +11,7 @@ module.exports = {
           imagen: "https://images.rappi.pe/products/40425-1541955284.png?d=200x200&?d=1920xundefined&e=webp",
           descripcion: "250 g",
           precio: 3,
+          stock: 100,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -21,6 +22,7 @@ module.exports = {
           imagen: "https://images.rappi.pe/products/97625-1560872039168.png?d=200x200&?d=1920xundefined&e=webp",
           descripcion: "400 g",
           precio: 4,
+          stock: 100,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -31,6 +33,7 @@ module.exports = {
           imagen: "https://images.rappi.pe/products/97539-1605570792796.png?d=200x200&?d=1200xundefined&e=webp",
           descripcion: "5 Kg",
           precio: 20,
+          stock: 100,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -41,6 +44,7 @@ module.exports = {
           imagen: "https://images.rappi.pe/products/97781-1592255736286.png?d=200x200&?d=1920xundefined&e=webp",
           descripcion: "228 g",
           precio: 3,
+          stock: 50,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -51,6 +55,7 @@ module.exports = {
           imagen: "https://images.rappi.pe/products/390940-1613059457429.jpg?d=200x200&?d=3840xundefined&e=webp",
           descripcion: "7 L",
           precio: 8,
+          stock: 50,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -61,6 +66,7 @@ module.exports = {
           imagen: "https://images.rappi.pe/products/35794-1540931960.png?d=200x200&?d=3840xundefined&e=webp",
           descripcion: "250 g",
           precio: 10,
+          stock: 50,
           createdAt: new Date(),
           updatedAt: new Date()
         }
