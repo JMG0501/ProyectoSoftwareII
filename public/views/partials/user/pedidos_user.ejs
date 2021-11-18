@@ -40,9 +40,15 @@
                                     <td class="align-middle"><%= pedidoUsuario[pedido].idTienda %></td>
                                     <td class="align-middle"><%= pedidoUsuario[pedido].fecha %></td>
                                     <td class="align-middle text-center">S/. <%= pedidoUsuario[pedido].monto %>.00</td>
-                                    <td class="align-middle text-center">
-                                        <div class="badge bg-warning rounded-pill">Pendiente<div>
-                                    </td>
+                                    <% if(pedidoUsuario[pedido].estado == "Pendiente"){ %>
+                                        <td class="align-middle text-center">
+                                            <div class="badge bg-warning rounded-pill"><%= pedidoUsuario[pedido].estado %><div>
+                                        </td>
+                                    <% } else{ %>  
+                                        <td class="align-middle text-center">
+                                            <div class="badge bg-success rounded-pill"><%= pedidoUsuario[pedido].estado %><div>
+                                        </td>
+                                    <% } %>
                                 </tr>
                             <% } %>
                         </tbody>

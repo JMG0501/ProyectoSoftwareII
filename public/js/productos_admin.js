@@ -7,6 +7,7 @@ const rellenarValoresActualesForm = (e) =>
     var imagen = document.getElementById("imagen"+productoIndex);
     var desc = document.getElementById("desc"+productoIndex);
     var precio = document.getElementById("precio"+productoIndex);
+    var stock = document.getElementById("stock"+productoIndex);
 
     productoIDGlobal = e.target.getAttribute("productoId");
 
@@ -14,6 +15,7 @@ const rellenarValoresActualesForm = (e) =>
     document.getElementById("inputImagen").value = imagen.getAttribute("src");
     document.getElementById("inputDesc").value = desc.innerText;
     document.getElementById("inputPrecio").value = parseInt(precio.innerText);
+    document.getElementById("inputStock").value = parseInt(stock.innerText);
 }
 
 const actualizarProducto = async () =>
@@ -22,6 +24,7 @@ const actualizarProducto = async () =>
     const nuevaImagen = document.getElementById("inputImagen").value;
     const nuevaDesc = document.getElementById("inputDesc").value;
     const nuevoPrecio = document.getElementById("inputPrecio").value;
+    const nuevoStock = document.getElementById("inputStock").value;
     const idProductoM = productoIDGlobal;
     const idTiendaM = localStorage.getItem("idTienda");
     const validacionURL = /^(ftp|http|https):\/\/[^ "]+$/;
@@ -37,7 +40,8 @@ const actualizarProducto = async () =>
             nombre: nuevoNombre,
             imagen: nuevaImagen,
             descripcion: nuevaDesc,
-            precio: nuevoPrecio
+            precio: nuevoPrecio,
+            stock: nuevoStock
         }
     
         fetch(`http://localhost:3000/producto_tienda`, {

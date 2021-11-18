@@ -27,6 +27,13 @@
                                         </small>
                                     </p>
                                     <p class="card-text">
+                                        <span>Stock Disponible: </span>
+                                        <span id="stock<%= prod %>">
+                                            <%= productoTienda[prod].stock %>
+                                        </span>
+                                        <span>unidades</span>
+                                    </p>
+                                    <p class="card-text">
                                         <span>S/.</span>
                                         <span id="precio<%= prod %>">
                                             <%= productoTienda[prod].precio %>
@@ -71,6 +78,10 @@
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Precio</label>
                                     <input type="number" class="form-control" id="inputPrecio" min="0" max="999">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Stock Disponible</label>
+                                    <input type="number" class="form-control" id="inputStock" min="0" max="999">
                                 </div>
                             </form>
         
