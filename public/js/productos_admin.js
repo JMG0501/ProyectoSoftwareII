@@ -7,7 +7,6 @@ const rellenarValoresActualesForm = (e) =>
     var imagen = document.getElementById("imagen"+productoIndex);
     var desc = document.getElementById("desc"+productoIndex);
     var precio = document.getElementById("precio"+productoIndex);
-    var stock = document.getElementById("stock"+productoIndex);
 
     productoIDGlobal = e.target.getAttribute("productoId");
 
@@ -15,7 +14,6 @@ const rellenarValoresActualesForm = (e) =>
     document.getElementById("inputImagen").value = imagen.getAttribute("src");
     document.getElementById("inputDesc").value = desc.innerText;
     document.getElementById("inputPrecio").value = parseInt(precio.innerText);
-    document.getElementById("inputStock").value = parseInt(stock.innerText);
 }
 
 const actualizarProducto = async () =>
@@ -24,7 +22,6 @@ const actualizarProducto = async () =>
     const nuevaImagen = document.getElementById("inputImagen").value;
     const nuevaDesc = document.getElementById("inputDesc").value;
     const nuevoPrecio = document.getElementById("inputPrecio").value;
-    const nuevoStock = document.getElementById("inputStock").value;
     const idProductoM = productoIDGlobal;
     const idTiendaM = localStorage.getItem("idTienda");
     const validacionURL = /^(ftp|http|https):\/\/[^ "]+$/;
@@ -40,8 +37,7 @@ const actualizarProducto = async () =>
             nombre: nuevoNombre,
             imagen: nuevaImagen,
             descripcion: nuevaDesc,
-            precio: nuevoPrecio,
-            stock: nuevoStock
+            precio: nuevoPrecio
         }
     
         fetch(`http://localhost:3000/producto_tienda`, {
@@ -78,6 +74,8 @@ const asignarOnClickBotonEditar = () =>
         botonEditar.onclick = rellenarValoresActualesForm;
         var botonBorrar = document.getElementById("idbutton"+idButton+"borrar");
         botonBorrar.onclick = rellenarValoresActualesForm;
+        var botonRegistrar = document.getElementById("idbutton"+idButton+"registrar");
+        botonRegistrar.onclick = rellenarValoresActualesForm;
         element = element.nextElementSibling;
     }
 }
@@ -143,12 +141,49 @@ const agregarProducto = async () =>
     }
 }
 
+const registrarStock = async () =>
+{
+    const nuevoProveedor = document.getElementById("inputProveedor").value;
+    const nuevaCantidad = document.getElementById("inputCantidadL").value;
+    const nuevaFDia = document.getElementById("inputDate").value;
+    const nuevaFMes = document.getElementById("inputMonth").value;
+    const nuevaFAño = document.getElementById("inputYear").value;
+    const nuevaFV = new Date(nuevaFMes.toString() + " " + nuevaFDia.toString() + ", " + nuevaFAño.toString() + " 00:00:01");
+    const idTiendaM = localStorage.getItem("idTienda");
+    const idProductoM = productoIDGlobal;
+        
+    var cuerpoPeticion =
+    {
+        idTienda: idTiendaM,
+        idProducto: idProductoM,
+        proveedor: nuevoProveedor,
+        cantidad: nuevaCantidad,
+        fechaVencimiento: nuevaFV,
+        estado: "Lote Vigente"
+    }
+
+    fetch(`http://localhost:3000/lote_producto`, {
+        method: "POST",
+        body: JSON.stringify(cuerpoPeticion),
+        headers: { "Content-Type": "application/json" }
+    }).then((resp) => {
+        resp.json().then((data) => {
+            if (data.msg == "") {
+                location.reload();
+            } else {
+                console.log("Error al crear lote")
+            }
+        })
+    })
+}
+
 function main() 
 {
     asignarOnClickBotonEditar();
     document.getElementById('butActualizar').addEventListener('click', actualizarProducto);
     document.getElementById('butEliminar').addEventListener('click', eliminarProducto);
     document.getElementById('butAgregar').addEventListener('click', agregarProducto);
+    document.getElementById('butRegistrar').addEventListener('click', registrarStock);
     document.getElementById("mensajeURLE").style.display = "none";
     document.getElementById("mensajeURLEA").style.display = "none";
 }

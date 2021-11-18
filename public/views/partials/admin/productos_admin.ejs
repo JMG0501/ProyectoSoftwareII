@@ -42,6 +42,7 @@
                                     </p>
                                     <button class="btn btn-primary" id="idbutton<%=productoTienda[prod].idProducto%>editar" productoIndex="<%= prod %>" productoId = "<%=productoTienda[prod].idProducto%>" tiendaId = "<%=productoTienda[prod].idTienda%>" data-bs-toggle="modal" data-bs-target="#modalEditar">Editar Producto</button>
                                     <button class="btn btn-primary" id="idbutton<%=productoTienda[prod].idProducto%>borrar" productoIndex="<%= prod %>" productoId = "<%=productoTienda[prod].idProducto%>" tiendaId = "<%=productoTienda[prod].idTienda%>" data-bs-toggle="modal" data-bs-target="#modalBorrar">Borrar Producto</button>
+                                    <button class="btn btn-primary" id="idbutton<%=productoTienda[prod].idProducto%>registrar" productoIndex="<%= prod %>" productoId = "<%=productoTienda[prod].idProducto%>" tiendaId = "<%=productoTienda[prod].idTienda%>" data-bs-toggle="modal" data-bs-target="#modalRegistrar">Registrar Stock</button>
                                 </div>
                             </div>
                         </div>
@@ -78,10 +79,6 @@
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Precio</label>
                                     <input type="number" class="form-control" id="inputPrecio" min="0" max="999">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Stock Disponible</label>
-                                    <input type="number" class="form-control" id="inputStock" min="0" max="999">
                                 </div>
                             </form>
         
@@ -153,6 +150,67 @@
         
                             <div class="d-grid gap-2 mt-2">
                                 <button class="btn btn-primary" role="button" id="butAgregar">Agregar Producto</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal Registrar Stock Producto-->
+            <div class="modal fade" id="modalRegistrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Registrar Stock</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Nombre del proveedor</label>
+                                    <input type="text" class="form-control" id="inputProveedor" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Cantidad</label>
+                                    <input type="number" class="form-control" id="inputCantidadL" min="1" max="9999" value="1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Fecha de Vencimiento</label>
+                                    <div class="row g-3">
+                                        <div class="col-sm">
+                                            <select class="form-select" aria-label="Default select example" id="inputDate">
+                                                <option disabled selected>Día</option>
+                                                <% for (var i =1; i <= 31;  i++ ) { %>
+                                                    <option value="<%=i%>"><%=i%></option>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm">
+                                            <select class="form-select" aria-label="Default select example" id="inputMonth">
+                                                <option disabled selected>Mes</option>
+                                                <% for (var i = 1; i <= 12;  i++ ) { %>
+                                                    <option value="<%=meses[i-1]%>"><%=i%></option>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm">
+                                            <select class="form-select" aria-label="Default select example" id="inputYear">
+                                                <option disabled selected>Año</option>
+                                                <% for (var i = 2021; i <= 2030;  i++ ) { %>
+                                                    <option value="<%=i%>"><%=i%></option>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                      </div>
+                                </div>
+                            </form>
+        
+                            <div class="d-grid gap-2 mt-2">
+                                <button class="btn btn-primary" role="button" id="butRegistrar">Registrar Stock</button>
                             </div>
                         </div>
                         <div class="modal-footer">

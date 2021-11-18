@@ -1,0 +1,113 @@
+<div id="layoutSidenav_content">
+    <main class="">
+        <div class="container-fluid px-4">
+            <!--Titulo de Sección-->
+            <h1 class="mt-4">Inventario</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Tienda Las Nubes</li>
+            </ol>
+
+            <!--Tabla de Pedidos-->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Base de Datos
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th class="align-middle text-center">ID Producto</th>
+                                <th class="align-middle text-center" >ID Lote</th>
+                                <th class="align-middle text-center">Proveedor</th>
+                                <th class="align-middle text-center">Cantidad</th>
+                                <th class="align-middle text-center">Fecha de Registro</th>
+                                <th class="align-middle text-center">Fecha de Vencimiento</th>
+                                <th class="align-middle text-center">Estado</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID Producto</th>
+                                <th>ID Lote</th>
+                                <th>Proveedor</th>
+                                <th>Cantidad</th>
+                                <th>Fecha de Registro</th>
+                                <th>Fecha de Vencimiento</th>
+                                <th>Estado</th>
+                            </tr>
+                        </tfoot>
+                        <tbody id="filasPedidos">
+                            <% for(var index = 0; index < lotesTienda.length; index++) { %>
+                                <tr>
+                                    <td class="align-middle text-center"><%= lotesTienda[index].idProducto %></td>
+                                    <td class="align-middle text-center"><%= lotesTienda[index].idLote %></td>
+                                    <td class="align-middle"><%= lotesTienda[index].proveedor %></td>
+                                    <td class="align-middle text-center"><%= lotesTienda[index].cantidad %></td>
+                                    <td class="align-middle text-center"><%= lotesTienda[index].fechaRegistro %></td>
+                                    <td class="align-middle text-center"><%= lotesTienda[index].fechaVencimiento %></td>
+                                    <% if(lotesTienda[index].estado == "Lote Vencido"){ %>
+                                        <td class="align-middle text-center">
+                                            <div class="badge bg-danger rounded-pill"><%= lotesTienda[index].estado %><div>
+                                        </td>
+                                    <% } else{ %>  
+                                        <td class="align-middle text-center">
+                                            <div class="badge bg-success rounded-pill"><%= lotesTienda[index].estado %><div>
+                                        </td>
+                                    <% } %>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!--Modal Editar Pedido -->
+            <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Pedido</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Estado del Pedido</label>
+                                    <select class="form-select" aria-label="Default select example" id="inputEstado">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Completado">Completado</option>
+                                    </select>
+                                </div>
+                            </form>
+        
+                            <div class="d-grid gap-2 mt-2">
+                                <button class="btn btn-primary" role="button" id="butActualizar">Actualizar Pedido</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+    </main>
+
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Universidad de Lima 2021</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="../../../js/pedidos_admin.js"></script>

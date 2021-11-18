@@ -25,7 +25,6 @@ const ProductoTiendaDAO =
                 imagen: nuevosDatos.imagen,
                 descripcion: nuevosDatos.descripcion,
                 precio: nuevosDatos.precio,
-                stock: nuevosDatos.stock,
                 updateAt: new Date()
             },
             {
@@ -78,10 +77,18 @@ const ProductoTiendaDAO =
     {
         const nuevoProducto = req.body;
 
+        const arregloProductoTiendaDB = await db.Producto_Tienda.findAll({
+            where : {idTienda : nuevoProducto.idTienda},
+            order: [["idProducto","DESC"]]
+        });
+
+        const ultimoIdActual = parseInt(arregloProductoTiendaDB[0].idProducto)
+        const nuevoId = ultimoIdActual + 1;
+
         const productoNuevo = 
         {
             idTienda: nuevoProducto.idTienda,
-            idProducto: 100,
+            idProducto: nuevoId,
             nombre: nuevoProducto.nombre,
             imagen: nuevoProducto.imagen,
             descripcion: nuevoProducto.descripcion,
