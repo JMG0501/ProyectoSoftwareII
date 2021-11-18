@@ -6,9 +6,39 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
+  height: 100vh;
 }
 
+.firstColor{
+  color:#F95F62;
+}
+.bgFirstColor{
+  background-color: #F95F62;
+}
+.bgSecondColor{
+  background-color: #FFCECF;
+}
 
+.bgWhite{
+  background-color: #fff;
+}
+.borderLeft{
+  border-radius: 1.5rem 0 0 1.5rem ;
+}
+.borderRight{
+  border-radius: 1.5rem;
+}
+@media screen and (min-width:768px){
+  .borderRight{
+    border-radius: 0 1.5rem 1.5rem 0;
+  }
+}
+.fontBold{
+  font-weight: 600;
+}
+.fontUpper{
+  text-transform: uppercase;
+}
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 

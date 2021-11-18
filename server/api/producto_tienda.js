@@ -25,6 +25,7 @@ const ProductoTiendaDAO =
                 imagen: nuevosDatos.imagen,
                 descripcion: nuevosDatos.descripcion,
                 precio: nuevosDatos.precio,
+                stock: nuevosDatos.stock,
                 updateAt: new Date()
             },
             {
@@ -71,6 +72,31 @@ const ProductoTiendaDAO =
         });
 
         res.json({msg : ""});
+    },
+
+    post : async (req, res) => 
+    {
+        const nuevoProducto = req.body;
+
+        const productoNuevo = 
+        {
+            idTienda: nuevoProducto.idTienda,
+            idProducto: 100,
+            nombre: nuevoProducto.nombre,
+            imagen: nuevoProducto.imagen,
+            descripcion: nuevoProducto.descripcion,
+            precio: nuevoProducto.precio,
+            createdAt : new Date(),
+            updatedAt : new Date()
+        }
+
+        const productoGuardado = await db.Producto_Tienda.create(productoNuevo);
+        const objRes = 
+        {
+            data : productoGuardado,
+            msg : ""
+        }
+        res.json(objRes);
     }
 }
 
