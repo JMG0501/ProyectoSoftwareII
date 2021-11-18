@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="layoutSidenav_content">
     <main class="">
         <div class="container-fluid px-4">
@@ -70,4 +71,78 @@
             </div>
         </div>
     </footer>
+=======
+<div id="layoutSidenav_content">
+    <main class="">
+        <div class="container-fluid px-4">
+            <!--Titulo de Sección-->
+            <h1 class="mt-4">Pedidos</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Mis pedidos</li>
+            </ol>
+
+            <!--Tabla de Pedidos-->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Base de Datos
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>ID Tienda</th>
+                                <th>Fecha de Creación</th>
+                                <th>Monto Total</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>ID Cliente</th>
+                                <th>Fecha de Creación</th>
+                                <th>Monto Total</th>
+                                <th>Estado</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% for(var pedido = 0; pedido < pedidoUsuario.length; pedido++) { %>
+                                <tr>
+                                    <td class="align-middle"><%= pedidoUsuario[pedido].idPedido %></td>
+                                    <td class="align-middle"><%= pedidoUsuario[pedido].idTienda %></td>
+                                    <td class="align-middle"><%= pedidoUsuario[pedido].fecha %></td>
+                                    <td class="align-middle text-center">S/. <%= pedidoUsuario[pedido].monto %>.00</td>
+                                    <% if(pedidoUsuario[pedido].estado == "Pendiente"){ %>
+                                        <td class="align-middle text-center">
+                                            <div class="badge bg-warning rounded-pill"><%= pedidoUsuario[pedido].estado %><div>
+                                        </td>
+                                    <% } else{ %>  
+                                        <td class="align-middle text-center">
+                                            <div class="badge bg-success rounded-pill"><%= pedidoUsuario[pedido].estado %><div>
+                                        </td>
+                                    <% } %>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>    
+        </div> 
+    </main>
+
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Universidad de Lima 2021</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+>>>>>>> 68b54ae5b99680789b120c7bae7ddb5c639b7acd
 </div>
