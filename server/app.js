@@ -36,10 +36,12 @@ app.get('/pagina_principal', function(req, res) {
 app.get('/:id/tiendas', async function(req, res) {
     // Creación de const[arreglo] que obtiene los registros de la tabla 'Tienda' de la BD
     const listaTiendas = await TiendaDAO.getAll()
-
+    const userId = req.params.id;
+    const userData = await login.find(userId)
     // Render del archivo tiendas.ejs [public\views\pages\tiendas.ejs]
     res.render('pages/tiendas', {
         // Se envía como variable 'tiendas' que contiene el arreglo listaTienda previamente creado
+        userData,
         tiendas: listaTiendas
     });
 });
