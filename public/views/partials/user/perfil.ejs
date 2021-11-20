@@ -1,0 +1,45 @@
+<%if (userData){%>
+<div class="col">
+  <div class="row px-4 pt-3">
+    <div class="card mb-4">
+      <div class="card-header">Detalles de Perfil</div>
+      <div class="card-body">
+        <div id="messagePerfil"></div>
+        <form action="">
+          <div class="mb-3">
+            <label for="inputUsername" class="small mb-1">Usuario:</label>
+            <input type="text" class="form-control" id="inputUsername" value="<%=userData.correo %>">
+          </div>
+          <div class="row gx-5 mb-3">
+            <div class="col-md-6">
+              <label class="small mb-1" for="inputNombre">Nombre:</label>
+              <input class="form-control" id="inputNombre" type="text" placeholder="Enter your first name"
+                value="<%=userData.nombre%>">
+            </div>
+            <div class="col-md-6">
+              <label class="small mb-1" for="inputApellido">Apellido:</label>
+              <input class="form-control" id="inputApellido" type="text" placeholder="Enter your last name"
+                value="<%=userData.apellido%>">
+            </div>
+          </div>
+          <div class="row gx-5 mb-3">
+            <div >
+              <label class="small mb-1" for="inputDireccion">Dirección:</label>
+              <input class="form-control" id="inputDireccion" type="text" placeholder="Ingresa tu dirección"
+                value="<%=userData.direccion%>">
+            </div>
+          </div>
+          <div class="row gx-3 mb-3">
+            <div class="col-md-6">
+              <label class="small mb-1" for="inputTelefono">Telefono</label>
+              <input class="form-control" id="inputTelefono" type="tel" placeholder="Ingresa tu numero de telefono"
+                value="<%=userData.telefono%>">
+            </div>
+          </div>
+          <button class="btn btn-primary" id="saveChangesBtn" type="submit" >Guardar Cambios</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%}%>

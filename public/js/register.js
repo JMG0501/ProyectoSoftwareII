@@ -71,7 +71,6 @@ const handleClick = async (e) => {
       esAdmin: 1,
       idTienda: objTienda.id
     }
-    console.log(resData.data);
   }
   //Crear administrador
   await sendData("../register", data);

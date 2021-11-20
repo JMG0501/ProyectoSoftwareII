@@ -11699,3 +11699,19 @@ body {
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
 }
+#layoutSidenav{
+  height: calc(100vh - 56px);
+}
+#messagePerfil{
+  padding: 0.56rem 0.56rem;
+  font-weight: 600;
+}
+#messagePerfil p{
+  margin:0;
+}
+.messageOk{
+  color: rgba(13,110,253,0.8);
+}
+.messageFail{
+  color: red;
+}

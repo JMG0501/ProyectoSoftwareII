@@ -31,6 +31,36 @@ const login =
     }
 
     res.json(objRes);
+  },
+  find: async (userId) => {
+
+    const user = await db.Usuario.findOne({ where: { id: userId } });
+    return user.dataValues;
+  },
+  update: async (req, res) => {
+    const Body = req.body;
+
+    if (Body.id == undefined || Body.correo == undefined || Body.nombre == undefined || Body.apellido == undefined
+      || Body.direccion == undefined || Body.telefono == undefined) {
+      return;
+    }
+
+    const user = await db.Usuario.findOne({ where: { id: Body.id } });
+    console.log(user);
+    if (user) {
+      await user.update({
+        nombre: Body.nombre,
+        apellido: Body.apellido,
+        correo: Body.correo,
+        direccion: Body.direccion,
+        telefono: Body.telefono
+      })
+      await user.save()
+    }
+    res.json({
+      user: user.dataValues,
+      msg: "updated"
+    })
   }
 }
 

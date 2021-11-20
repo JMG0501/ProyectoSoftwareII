@@ -2,25 +2,30 @@
 <html lang="es">
 
 <head>
-    <%- include('../partials/user/head'); %>
+    <%- include('../partials/admin/head'); %>
     <title>Tiendas</title>
 </head>
 
-<body class="container">
+<body>
 
-    <header>
-        <%- include('../partials/user/header'); %>
-    </header>
 
-    <main >
+
+
+    <%- include('../partials/user/navbar'); %>
+
+    <!-- Layout SideNavbar -->
+    <div id="layoutSidenav">
+        <!-- Layout SideNavbar Nav -->
+        <%- include('../partials/user/layout_sidenav'); %>
+        <!-- Layout SideNavbar Nav Content -->
         <%- include('../partials/user/store_cards'); %>
-    </main>
+    </div>
 
-    <footer class="card container">
-        <%- include('../partials/user/footer'); %>
-    </footer>
+
     
     <%- include('../partials/user/bootstrap'); %>
+    <%- include('../partials/admin/scripts'); %>
+    <script src="../../js/perfil.js"></script>
 </body>
 
 </html>

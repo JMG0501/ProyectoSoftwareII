@@ -33,7 +33,7 @@ app.get('/pagina_principal', function(req, res) {
 });
 
 // Tiendas
-app.get('/tiendas', async function(req, res) {
+app.get('/:id/tiendas', async function(req, res) {
     // Creación de const[arreglo] que obtiene los registros de la tabla 'Tienda' de la BD
     const listaTiendas = await TiendaDAO.getAll()
 
@@ -44,7 +44,7 @@ app.get('/tiendas', async function(req, res) {
     });
 });
 
-app.post('/tiendas', (req,res)=>{
+app.post('/:id/tiendas', (req,res)=>{
     TiendaDAO.post(req,res);
 });
 
@@ -267,7 +267,18 @@ app.get("/register",(req,res)=>{
 app.post("/register", (req,res)=>{
     registro.post(req,res);
 });
+//Perfil
 
+app.get('/:id/perfil',async (req,res)=>{
+    const userId = req.params.id;
+    let userData = await login.find(userId);
+    console.log(userData);
+    res.render('pages/perfilUsuario',{userData})
+})
+app.post('/:id/perfil', async (req,res)=>{
+    console.log(req.body);
+    let userData = await login.update(req,res);
+})
 // Checkout
 app.get('/checkout', function(req, res) {
     res.render('pages/checkout');

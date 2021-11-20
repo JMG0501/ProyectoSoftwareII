@@ -49,7 +49,7 @@ const handleClick = async (e) => {
     }else{
       //redireccionar a tienda
       localStorage.setItem("idUsuario", user.id)
-      location.href = "tiendas";
+      location.href = `${user.id}/tiendas`;
     }
   }else{
     setMessage("Correo o contraseñas incorrectas");
