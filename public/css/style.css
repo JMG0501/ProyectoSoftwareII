@@ -3,10 +3,112 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
   color: #5a5a5a;
   height: 100vh;
+}
+
+header {
+  background: #F95F62;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #FFFFFF, #F95F62);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #FFFFFF, #F95F62); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+nav{
+  animation: abajo 1s ease-in;
+}
+
+.textos{
+  width: 50%;
+  color:#fff;
+}
+
+.textos h1{
+  font-size:80px;
+  animation: moverDerecha 1s ease-in;
+
+}
+
+.textos h2{
+  font-size:30px;
+  animation: moverIzquierda 1s ease-in;
+}
+
+.textos a{
+  display: inline-block;
+  color:#fff;
+  font-weight: 300;
+  text-decoration: none;
+  margin-top: 30px;
+  border: 1px solid #fff;
+  width: 150px;
+  border-radius: 3px;
+  text-align: center;
+  padding: 10px 0;
+  animation: arriba 1s ease-in;
+
+}
+
+.wave{
+  height: 100px;
+  width: 100%;
+  background: #F95F62;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #FFFFFF, #F95F62);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #FFFFFF, #F95F62); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.containerLanding{
+  width: 95%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.imagen{
+    position: absolute;
+    width: 100px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.imgLanding{
+  display: block;
+    height: 450px;
+    object-fit: cover;
+    animation: arriba 1s ease-in;
+}
+
+.sizeMarketing{
+font-size: 32px;
+}
+
+.enlaces{
+  position: fixed;
+  display: flex;
+  top: 0;
+  background: #000;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  right: 0;
+  flex-direction: column;
+  width: 100%;
+  transition: all 1s ease;
+  background: #bc4e9c;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f80759, #bc4e9c);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f80759, #bc4e9c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.uno{
+  
+-webkit-clip-path: circle(0% at 0 0);
+clip-path: circle(0% at 0 0);
+
 }
 
 .firstColor{
@@ -99,7 +201,56 @@ body {
   letter-spacing: -.05rem;
 }
 
+/* ANIMACIONES*/
 
+@keyframes moverIzquierda{
+  0%{
+      opacity: 0;
+      transform: translateX(-100px);
+  }
+
+  100%{
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+
+@keyframes moverDerecha{
+  0%{
+      opacity: 0;
+      transform: translateX(100px);
+  }
+
+  100%{
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+
+@keyframes arriba{
+  0%{
+      opacity: 0;
+      transform: translateY(100px);
+  }
+
+  100%{
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+
+
+@keyframes abajo{
+  0%{
+      opacity: 0;
+      transform: translateY(-100px);
+  }
+
+  100%{
+      opacity: 1;
+      transform: translate(0);
+  }
+}
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
@@ -120,4 +271,19 @@ body {
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+
+@media screen and (max-width:450px){
+  .container{
+      width: 100%;
+      flex-wrap: wrap-reverse;
+      justify-content: center;
+  }
+  .textos{
+      width: 100%;
+      text-align: center;
+  }
+  .textos h1{
+      font-size: 60px;
+  }    
 }

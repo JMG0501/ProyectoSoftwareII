@@ -6,9 +6,9 @@
     <title>Productos</title>
 </head>
 
-<body class="container">
+<body class="container"> <!--container-fluid-->
 
-    <header>
+    <header class="mb-4">
         <%- include('../partials/user/header_cc'); %>
     </header>
 
@@ -50,7 +50,12 @@
                                         </span>
                                         <span>.00 /u</span>
                                     </p>
-                                    <button class="btn btn-success" idbutton="<%=productoTienda[prod].idProducto%>" id="idbutton<%=productoTienda[prod].idProducto%>" idTienda="<%=productoTienda[prod].idTienda%>" idProducto="<%=productoTienda[prod].idProducto%>" stock="<%= productoTienda[prod].stock %>">Agregar Producto</button>
+                                    <button class="btn text-white bgFirstColor" idbutton="<%=productoTienda[prod].idProducto%>" 
+                                        id="idbutton<%=productoTienda[prod].idProducto%>" 
+                                        idTienda="<%=productoTienda[prod].idTienda%>" 
+                                        idProducto="<%=productoTienda[prod].idProducto%>" 
+                                        stock="<%= productoTienda[prod].stock %>"
+                                        >Agregar Producto</button>
                                 </div>
                             </div>
                         </div>
@@ -60,9 +65,7 @@
         </div>
     </main>
 
-    <footer class="card container">
-        <%- include('../partials/user/footer'); %>
-    </footer>
+    
 
     <!-- Modal Carrito de Compras-->
     <div class="modal fade" id="modalCarrito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -89,7 +92,7 @@
                     <p id="subtotal">Subtotal: S/. 0</p>
 
                     <div class="d-grid gap-2 mt-2">
-                        <button type="button" class="btn btn-success btn-block" id="botonPagar">
+                        <button type="button" class="btn text-white bgFirstColor" id="botonPagar">
                             Ir a pagar
                         </button>
                     </div>
@@ -104,6 +107,11 @@
     <%- include('../partials/user/bootstrap'); %>
     <script src="/js/productos.js"></script>
 
+    <footer>
+        <%- include('../partials/user/footer'); %>
+    </footer>
 </body>
+
+
 
 </html>

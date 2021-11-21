@@ -32,6 +32,12 @@ app.get('/pagina_principal', function(req, res) {
     res.render('pages/pagina_principal');
 });
 
+app.get('/pagina_principal2', function(req, res) {
+    // Render del archivo pagina_principal.ejs [public\views\pages\pagina_principal.ejs]
+    res.render('pages/pagina_principal2');
+});
+
+
 // Tiendas
 app.get('/:id/tiendas', async function(req, res) {
     // Creación de const[arreglo] que obtiene los registros de la tabla 'Tienda' de la BD
