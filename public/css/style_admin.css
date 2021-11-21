@@ -89,6 +89,11 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
+.firstColor{
+  color:#F95F62;
+}
+
 .bgFirstColor{
   background-color: #F95F62;
 }
@@ -100,9 +105,7 @@ body {
   background-color: #fff;
 }
 
-.logo{
-  width: 120px;
-}
+
 
 hr {
   margin: 1rem 0;

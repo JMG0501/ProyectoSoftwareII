@@ -13,12 +13,12 @@
     </header>
 
     <main>
-        <div class="row">
+        <div class="row" style="margin-top: 80px; margin-bottom: 80px;  animation: moverIzquierda 1s ease-in;">
             <!--Filtros-->
             <%- include('../partials/user/filtro_productos'); %>
 
             <!--Cards Productos-->
-            <div id="cardsProductos" class="col-md-8 mt-4">
+            <div id="cardsProductos" class="col-md-8 mt-4" style="animation: moverIzquierda 1s ease-in;">
                 <% for(var prod = 0; prod < productoTienda.length; prod++) { %>
                     <div class="card mb-3" id="producto<%=productoTienda[prod].idProducto%>" productoId="<%=productoTienda[prod].idProducto%>">
                         <div class="row card-body align-items-center">
