@@ -103,8 +103,11 @@ app.get('/:id/productos', async function(req, res) {
             imagen: object.imagen,
             descripcion: object.descripcion,
             precio: object.precio,
-            stock: stockDisponible
+            stock: stockDisponible,
+            categoria : object.categoria
         })
+
+        console.log(object.categoria)
     }
 
     res.render('pages/productos', {
@@ -275,8 +278,8 @@ app.get("/register",(req,res)=>{
 app.post("/register", (req,res)=>{
     registro.post(req,res);
 });
-//Perfil
 
+//Perfil
 app.get('/:id/perfil',async (req,res)=>{
     const userId = req.params.id;
     let userData = await login.find(userId);
@@ -287,6 +290,7 @@ app.post('/:id/perfil', async (req,res)=>{
     console.log(req.body);
     let userData = await login.update(req,res);
 })
+
 // Checkout
 app.get('/checkout', function(req, res) {
     res.render('pages/checkout');
@@ -306,10 +310,6 @@ app.get('/:id/user_pedidos', async function(req, res) {
     const pedidoUsuarioId = req.params.id;
     const listaPedidoUsuarioDB = await PedidoUsuarioDAO.getPedidoUsuario(parseInt(pedidoUsuarioId));
     const listaPedidoUsuario = [];
-
-    const userId = req.params.id;
-    const userData = await login.find(userId)
-
     for (let object of listaPedidoUsuarioDB)
     {
         listaPedidoUsuario.push({
@@ -322,7 +322,6 @@ app.get('/:id/user_pedidos', async function(req, res) {
     }
 
     res.render('pages/user_pedidos', {
-        userData,
         pedidoUsuario: listaPedidoUsuario,
     });
 });

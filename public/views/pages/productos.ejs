@@ -20,7 +20,7 @@
             <!--Cards Productos-->
             <div id="cardsProductos" class="col-md-8 mt-4" style="animation: moverIzquierda 1s ease-in;">
                 <% for(var prod = 0; prod < productoTienda.length; prod++) { %>
-                    <div class="card mb-3" id="producto<%=productoTienda[prod].idProducto%>" productoId="<%=productoTienda[prod].idProducto%>">
+                    <div class="card mb-3" id="producto<%=productoTienda[prod].idProducto%>" productoId="<%=productoTienda[prod].idProducto%>" categoria="<%=productoTienda[prod].categoria%>">
                         <div class="row card-body align-items-center">
                             <div class="col-md-3">
                                 <img src="<%= productoTienda[prod].imagen %>" class="img-fluid rounded mx-auto d-block"
