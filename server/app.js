@@ -91,7 +91,7 @@ app.get('/:id/productos', async function(req, res) {
         {
             if (object.estado == "Lote Vigente") 
             {
-                stockDisponible = stockDisponible + parseInt(object.cantidad)
+                stockDisponible = stockDisponible + parseInt(object.stockDisponible)
             }
         }
 
@@ -145,7 +145,7 @@ app.get('/:id/admin_index', async function(req, res) {
         {
             if (object.estado == "Lote Vigente") 
             {
-                stockDisponible = stockDisponible + parseInt(object.cantidad)
+                stockDisponible = stockDisponible + parseInt(object.stockDisponible)
             }
         }
         
@@ -220,7 +220,7 @@ app.get('/:id/admin_inventario', async function(req, res) {
         {
             if (object.estado == "Lote Vigente") 
             {
-                stockDisponible = stockDisponible + parseInt(object.cantidad)
+                stockDisponible = stockDisponible + parseInt(object.stockDisponible)
             }
         }
     }
@@ -241,7 +241,9 @@ app.get('/:id/admin_inventario', async function(req, res) {
             idProducto: object.idProducto,
             idLote: object.idLote,
             proveedor: object.proveedor,
-            cantidad: object.cantidad,
+            stockRegistrado: object.stockRegistrado,
+            stockDisponible: object.stockDisponible,
+            stockVendido: object.stockVendido,
             fechaRegistro: diaFR+"/"+mesFR+"/"+añoFR, 
             fechaVencimiento: diaFV+"/"+mesFV+"/"+añoFV, 
             estado: object.estado
@@ -283,11 +285,11 @@ app.post("/register", (req,res)=>{
 app.get('/:id/perfil',async (req,res)=>{
     const userId = req.params.id;
     let userData = await login.find(userId);
-    console.log(userData);
+    // console.log(userData);
     res.render('pages/perfilUsuario',{userData})
 })
 app.post('/:id/perfil', async (req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
     let userData = await login.update(req,res);
 })
 

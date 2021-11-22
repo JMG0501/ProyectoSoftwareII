@@ -20,7 +20,13 @@ module.exports = {
       proveedor: {
         type: Sequelize.STRING
       },
-      cantidad: {
+      stockRegistrado: {
+        type: Sequelize.INTEGER
+      },
+      stockDisponible: {
+        type: Sequelize.INTEGER
+      },
+      stockVendido: {
         type: Sequelize.INTEGER
       },
       fechaVencimiento: {

@@ -20,7 +20,9 @@
                                 <th class="align-middle text-center">ID Producto</th>
                                 <th class="align-middle text-center" >ID Lote</th>
                                 <th class="align-middle text-center">Proveedor</th>
-                                <th class="align-middle text-center">Cantidad</th>
+                                <th class="align-middle text-center">Stock Registrado</th>
+                                <th class="align-middle text-center">Stock Disponible</th>
+                                <th class="align-middle text-center">Stock Vendido</th>
                                 <th class="align-middle text-center">Fecha de Registro</th>
                                 <th class="align-middle text-center">Fecha de Vencimiento</th>
                                 <th class="align-middle text-center">Estado</th>
@@ -31,7 +33,9 @@
                                 <th>ID Producto</th>
                                 <th>ID Lote</th>
                                 <th>Proveedor</th>
-                                <th>Cantidad</th>
+                                <th>Stock Registrado</th>
+                                <th>Stock Disponible</th>
+                                <th>Stock Vendido</th>
                                 <th>Fecha de Registro</th>
                                 <th>Fecha de Vencimiento</th>
                                 <th>Estado</th>
@@ -43,7 +47,9 @@
                                     <td class="align-middle text-center"><%= lotesTienda[index].idProducto %></td>
                                     <td class="align-middle text-center"><%= lotesTienda[index].idLote %></td>
                                     <td class="align-middle"><%= lotesTienda[index].proveedor %></td>
-                                    <td class="align-middle text-center"><%= lotesTienda[index].cantidad %></td>
+                                    <td class="align-middle text-center"><%= lotesTienda[index].stockRegistrado %></td>
+                                    <td class="align-middle text-center"><%= lotesTienda[index].stockDisponible %></td>
+                                    <td class="align-middle text-center"><%= lotesTienda[index].stockVendido %></td>
                                     <td class="align-middle text-center"><%= lotesTienda[index].fechaRegistro %></td>
                                     <td class="align-middle text-center"><%= lotesTienda[index].fechaVencimiento %></td>
                                     <% if(lotesTienda[index].estado == "Lote Vencido"){ %>
