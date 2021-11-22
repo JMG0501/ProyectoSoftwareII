@@ -10,36 +10,53 @@ var pedidoPreliminar = [];
 // var cantidadBotones = 0;
 // Local Storage
 
-var filtrarProductos = () =>
-{ 
-    var urlAEjecutar = `${URL_BASE}/producto`;
+var butFiltrarProductosOnClick = () =>
+{
+    var listaCategorias = document.getElementById("listaCategorias");
+    var categoriaSelected = listaCategorias.selectedIndex;
 
-    var signoBool = false
+    console.log("CATEGORIA: " +categoriaSelected)
 
-    var categoriaB = document.getElementById("listaCategorias").selectedIndex;
-    if (categoriaB != 0){
-        if (signoBool == false)
-        {
-            urlAEjecutar += "?";
-            signoBool = true; 
-        }
-        urlAEjecutar += `categoria=${categoriaB}`;
-        //categoriaSeleccion = true
-    };
+    //1. borrar todos los cards de la vista
 
-    fetch(urlAEjecutar, 
+    const myElement = document.getElementById('cardsProductos');
+    var element = myElement.firstElementChild;
+    var idCategoriaElement = 0;
+    for (let i = 0; i < myElement.children.length; i++) 
     {
-        method : "GET"
-    }).then( (res) => {
-        res.json().then((data)=> {
-            if (data.msg == "") {
-                document.getElementById('cardsProductos').innerHTML = "";
-                for (var ev of data.data) {
-                    armarCard(ev);
-                }
-            }
-        })
-    })
+        element.style.display = "none"
+        var categoriaElement = element.getAttribute("categoria");
+        
+        // obtener ids
+        if(categoriaElement == "Abarrotes"){
+            idCategoriaElement = 1
+        }else if(categoriaElement == "Aguas y Bebidas"){
+            idCategoriaElement = 2
+        }else if(categoriaElement == "Frutas y Verduras"){
+            idCategoriaElement = 3
+        }else if(categoriaElement == "Galletas"){
+            idCategoriaElement = 4
+        }
+
+        //2. mostrar las cards que tengan la categoria seleccionada
+        if(idCategoriaElement == categoriaSelected){
+            element.style.display = "block"
+        }
+        console.log("CATEGORIA element: "+idCategoriaElement);
+        console.log("CATEGORIA element: "+categoriaElement);
+        element = element.nextElementSibling;
+    }
+}
+
+var butBorrarFiltrosOnClick = () => 
+{
+    const myElement = document.getElementById('cardsProductos');
+    var element = myElement.firstElementChild;
+    for (let i = 0; i < myElement.children.length; i++) 
+    {
+        element.style.display = "block"
+        element = element.nextElementSibling;
+    }
 }
 
 const butAgregarProductoOnClick = (e) => {
@@ -177,8 +194,13 @@ const generarPedidoPreliminar = () =>
 
 function main() 
 {
+    console.log("PRUEBA");
     asignarOnClickBotones();
     document.getElementById('botonPagar').addEventListener('click', generarPedidoPreliminar);
+
+    
+    document.getElementById("butFiltrar").addEventListener('click', butFiltrarProductosOnClick);
+    document.getElementById("butBorrarFiltros").addEventListener('click', butBorrarFiltrosOnClick);
 }
 
 window.addEventListener("load", main);

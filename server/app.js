@@ -310,6 +310,9 @@ app.get('/:id/user_pedidos', async function(req, res) {
     const pedidoUsuarioId = req.params.id;
     const listaPedidoUsuarioDB = await PedidoUsuarioDAO.getPedidoUsuario(parseInt(pedidoUsuarioId));
     const listaPedidoUsuario = [];
+
+    const userId = req.params.id;
+    const userData = await login.find(userId)
     for (let object of listaPedidoUsuarioDB)
     {
         listaPedidoUsuario.push({
@@ -322,6 +325,7 @@ app.get('/:id/user_pedidos', async function(req, res) {
     }
 
     res.render('pages/user_pedidos', {
+        userData,
         pedidoUsuario: listaPedidoUsuario,
     });
 });
