@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/user/head'); %>
+    <title>Pagina Principal</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <div class="container-fluid">
+                <a href="pagina_principal" style="width:12%"><img src="../../../images/logo_frutiexpress.png" style="width:100%"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse mx-3" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary fontBold" href="about_us">¿Quienes somos?</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-end">
+                    <a type="button" class="btn btn-outline-secondary fontBold me-2" href="login">
+                        Iniciar Sesión
+                    </a>
+                    <a type="button" class="btn text-white bgFirstColor" href="register">Regístrate</a>
+                </div>
+                
+            </div>
+            
+        </nav>
+
+        <div class="containerLanding">
+            <div class="textos">
+                <h1>¿Quienes somos?</h1>
+                <p>FrutiExpress nace con la idea de facilitarte la vida. Simplificamos la forma cotidiana de comprar artículos desde casa, llevándolo al ámbito digital, 
+                    para brindarte más velocidad y comodidad. No es lo que hacemos, es lo que somos. 
+                </p>
+                <p> Nuestro equipo:
+                </p>
+                <p> 
+                    - Piero Gallo - Maricielo Jara - Jorge Mandujano
+                </p>
+                <p>
+                    - Maritza Palomino - Renatto Pantoja - Valia Zavala
+                </p>
+            </div>
+            <img class="imgLanding" src="../../images/delivery.png" alt="">
+        </div>
+        <div class="wave">
+            <div style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
+        </div>
+    </header>
+    
+    <main>
+        
+        <%- include('../partials/user/containerMarketing'); %>
+    </main>
+
+    <footer>
+        <%- include('../partials/user/footer'); %>
+    </footer>
+    
+    <%- include('../partials/user/bootstrap'); %>
+    
+
+</body>
+
+</html>

@@ -32,9 +32,9 @@ app.get('/pagina_principal', function(req, res) {
     res.render('pages/pagina_principal');
 });
 
-app.get('/pagina_principal2', function(req, res) {
+app.get('/about_us', function(req, res) {
     // Render del archivo pagina_principal.ejs [public\views\pages\pagina_principal.ejs]
-    res.render('pages/pagina_principal2');
+    res.render('pages/about_us');
 });
 
 
