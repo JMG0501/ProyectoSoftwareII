@@ -61,6 +61,8 @@ var butBorrarFiltrosOnClick = () =>
 
 const butAgregarProductoOnClick = (e) => {
     var numID = e.target.getAttribute("idbutton");
+    var idButton = e.target.getAttribute("id");
+    var divCard = document.getElementById(idButton).parentNode
 
     var idTienda = e.target.getAttribute("idTienda");
     var idProducto = e.target.getAttribute("idProducto");
@@ -93,6 +95,11 @@ const butAgregarProductoOnClick = (e) => {
         var span = document.createElement('span');
         span.setAttribute("id", "productoCant" + numID)
         span.innerHTML = cantidad;
+
+        var span2 = document.createElement('span');
+        span2.setAttribute("id", "productoCant2" + numID)
+        span2.innerHTML = span.innerHTML;
+
         var butD = document.createElement("button");
         butD.setAttribute("class", "btn text-white bgFirstColor btn-sm me-2")
         butD.setAttribute("id", "butD" + numID)
@@ -100,16 +107,39 @@ const butAgregarProductoOnClick = (e) => {
         butD.onclick = function()
         {
             var prodCantidad = document.getElementById("productoCant"+numID)
+            var prodCantidad2 = document.getElementById("productoCant2"+numID)
             var montoParcial = document.getElementById("colProductoMonto" + numID)
             var subtotal = document.getElementById('subtotal')
             if (parseInt(prodCantidad.innerHTML) > 1) 
             {
                 prodCantidad.innerHTML = parseInt(prodCantidad.innerHTML) - 1;
+                prodCantidad2.innerHTML = parseInt(prodCantidad2.innerHTML) - 1;
                 montoParcial.innerText = parseInt(monto2)*parseInt(prodCantidad.innerHTML);
                 montoTotal = montoTotal-parseInt(monto2);
                 subtotal.innerText = "Subtotal: S/. " + montoTotal + ".00";
             }
         }
+
+        var butD2 = document.createElement("button");
+        butD2.setAttribute("class", "btn text-white bgFirstColor btn me-2")
+        butD2.setAttribute("id", "butD" + numID)
+        butD2.innerHTML = "-"
+        butD2.onclick = function()
+        {
+            var prodCantidad = document.getElementById("productoCant"+numID)
+            var prodCantidad2 = document.getElementById("productoCant2"+numID)
+            var montoParcial = document.getElementById("colProductoMonto" + numID)
+            var subtotal = document.getElementById('subtotal')
+            if (parseInt(prodCantidad.innerHTML) > 1) 
+            {
+                prodCantidad.innerHTML = parseInt(prodCantidad.innerHTML) - 1;
+                prodCantidad2.innerHTML = parseInt(prodCantidad2.innerHTML) - 1;
+                montoParcial.innerText = parseInt(monto2)*parseInt(prodCantidad.innerHTML);
+                montoTotal = montoTotal-parseInt(monto2);
+                subtotal.innerText = "Subtotal: S/. " + montoTotal + ".00";
+            }
+        }
+        
         var butA = document.createElement("button");
         butA.setAttribute("class", "btn text-white bgFirstColor btn-sm ms-2")
         butA.setAttribute("id", "butA" + numID)
@@ -117,16 +147,45 @@ const butAgregarProductoOnClick = (e) => {
         butA.onclick = function()
         {
             var prodCantidad = document.getElementById("productoCant"+numID)
+            var prodCantidad2 = document.getElementById("productoCant2"+numID)
             var montoParcial = document.getElementById("colProductoMonto" + numID)
             var subtotal = document.getElementById('subtotal')
             if (parseInt(prodCantidad.innerHTML) < stockProducto) 
             {
                 prodCantidad.innerHTML = parseInt(prodCantidad.innerHTML) + 1;
+                prodCantidad2.innerHTML = parseInt(prodCantidad2.innerHTML) + 1;
                 montoParcial.innerText = parseInt(monto2)*parseInt(prodCantidad.innerHTML);
                 montoTotal = montoTotal+parseInt(monto2);
                 subtotal.innerText = "Subtotal: S/. " + montoTotal + ".00";
             }
         }
+
+        var butA2 = document.createElement("button");
+        butA2.setAttribute("class", "btn text-white bgFirstColor btn ms-2")
+        butA2.setAttribute("id", "butA" + numID)
+        butA2.innerHTML = "+"
+        butA2.onclick = function()
+        {
+            var prodCantidad = document.getElementById("productoCant"+numID)
+            var prodCantidad2 = document.getElementById("productoCant2"+numID)
+            var montoParcial = document.getElementById("colProductoMonto" + numID)
+            var subtotal = document.getElementById('subtotal')
+            if (parseInt(prodCantidad.innerHTML) < stockProducto) 
+            {
+                prodCantidad.innerHTML = parseInt(prodCantidad.innerHTML) + 1;
+                prodCantidad2.innerHTML = parseInt(prodCantidad2.innerHTML) + 1;
+                montoParcial.innerText = parseInt(monto2)*parseInt(prodCantidad.innerHTML);
+                montoTotal = montoTotal+parseInt(monto2);
+                subtotal.innerText = "Subtotal: S/. " + montoTotal + ".00";
+            }
+        }
+
+        document.getElementById(idButton).style.display = "none";
+        var p1 = document.createElement("p");
+        p1.appendChild(butD2);
+        p1.appendChild(span2);
+        p1.appendChild(butA2);
+        divCard.appendChild(p1);
 
         td1.innerHTML = producto.innerHTML;
         td3.innerHTML = monto2;
