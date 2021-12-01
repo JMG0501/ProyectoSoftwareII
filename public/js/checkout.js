@@ -116,7 +116,8 @@ const finPedido = () =>
 {
     localStorage.setItem("pedidoPreliminar", JSON.stringify([]));
     localStorage.setItem("subtotalPreliminar", 0);
-    location.href = "tiendas";
+    var idUsuario = localStorage.getItem("idUsuario")
+    location.href = idUsuario + "/user_pedidos";
 }
 
 const main = () => 
