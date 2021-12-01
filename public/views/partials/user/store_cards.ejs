@@ -1,7 +1,4 @@
-<div id="cardsTiendas" class="" >
-    <div class="mt-4 px-5">
-        <img src="../../images/paso1.png" style="width:20%">    
-    </div>
+<div id="cardsTiendas" style="animation: moverIzquierda 1s ease-in;" >
     <% tiendas.forEach(function(tienda) { %>
         <div class="card mb-3 mt-4 mx-4">
             <div class="row card-body align-items-center">
@@ -12,7 +9,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= tienda.nombreTienda %></h5>
                         <p class="card-text"><small class="text-muted">1hr o programada</small></p>
-                        <a class="btn bgFirstColor" role="button" href="../<%= tienda.id %>/productos">Ir a la tienda</a>
+                        <a class="btn text-white bgFirstColor" role="button" href="../<%= tienda.id %>/productos">Ir a la tienda</a>
                     </div>
                 </div>
             </div>

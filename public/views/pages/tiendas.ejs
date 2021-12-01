@@ -2,22 +2,24 @@
 <html lang="es">
 
 <head>
-    <%- include('../partials/admin/head'); %>
+    <%- include('../partials/user/head'); %>
     <title>Tiendas</title>
 </head>
 
-<body>
+<body class="container">
 
     <header class="mb-4">
         <%- include('../partials/user/header_cc'); %>
     </header>
-    
-    <!--<%- include('../partials/user/navbar'); %> -->
-    <!-- Layout SideNavbar -->
+    <main>
+        <div class="px-5 align-items-center" style="margin-top: 110px; margin-left:290px; animation: moverIzquierda 1s ease-in;">
+            <img src="../../images/paso1.png" style="width:20%">
+            <img src="../../images/paso_fake.png" style="width:20%">
+            <img src="../../images/paso_fake.png" style="width:20%">
+        </div>
+    </main>
+
     <div id="container">
-        <!-- Layout SideNavbar Nav -->
-        <!-- <%- include('../partials/user/layout_sidenav'); %> -->
-        <!-- Layout SideNavbar Nav Content -->
         <%- include('../partials/user/store_cards'); %>
     </div>
 
@@ -26,6 +28,10 @@
     <%- include('../partials/user/bootstrap'); %>
     <%- include('../partials/admin/scripts'); %>
     <script src="../../js/perfil.js"></script>
+
+    <footer>
+        <%- include('../partials/user/footer'); %>
+    </footer>
 </body>
 
 </html>
