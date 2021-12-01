@@ -22,6 +22,7 @@ const actualizarProducto = async () =>
     const nuevaImagen = document.getElementById("inputImagen").value;
     const nuevaDesc = document.getElementById("inputDesc").value;
     const nuevoPrecio = document.getElementById("inputPrecio").value;
+    const nuevaCategoria = document.getElementById("inputCategoria").value;
     const idProductoM = productoIDGlobal;
     const idTiendaM = localStorage.getItem("idTienda");
     const validacionURL = /^(ftp|http|https):\/\/[^ "]+$/;
@@ -37,7 +38,8 @@ const actualizarProducto = async () =>
             nombre: nuevoNombre,
             imagen: nuevaImagen,
             descripcion: nuevaDesc,
-            precio: nuevoPrecio
+            precio: nuevoPrecio,
+            categoria: nuevaCategoria
         }
     
         fetch(`http://localhost:3000/producto_tienda`, {

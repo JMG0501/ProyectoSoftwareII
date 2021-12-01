@@ -48,6 +48,7 @@ const LoteProductoDAO =
     post : async (req, res) =>
     {
         const nuevoLote = req.body;
+        var nuevoId;
 
         const arregloLoteProductoTienda = await db.Lote_Producto.findAll({
             where : 
@@ -58,8 +59,15 @@ const LoteProductoDAO =
             order: [["idLote","DESC"]]
         });
 
-        const ultimoIdActual = parseInt(arregloLoteProductoTienda[0].idLote)
-        const nuevoId = ultimoIdActual + 1;
+        if (arregloLoteProductoTienda.length == 0)
+        {
+            nuevoId = 1;
+        }
+        else
+        {
+            const ultimoIdActual = parseInt(arregloLoteProductoTienda[0].idLote)
+            nuevoId = ultimoIdActual + 1;
+        }
 
         const loteNuevo =
         {
@@ -67,7 +75,9 @@ const LoteProductoDAO =
             idProducto: nuevoLote.idProducto,
             idLote: nuevoId,
             proveedor: nuevoLote.proveedor,
-            cantidad: nuevoLote.cantidad,
+            stockRegistrado: nuevoLote.cantidad,
+            stockDisponible: nuevoLote.cantidad,
+            stockVendido: 0,
             fechaVencimiento: nuevoLote.fechaVencimiento,
             estado: nuevoLote.estado,
             createdAt: new Date(),

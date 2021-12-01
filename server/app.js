@@ -158,6 +158,7 @@ app.get('/:id/admin_index', async function(req, res) {
             descripcion: object.descripcion,
             precio: object.precio,
             stock: stockDisponible,
+            categoria: object.categoria
         })
     }
 

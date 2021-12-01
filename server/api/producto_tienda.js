@@ -25,6 +25,7 @@ const ProductoTiendaDAO =
                 imagen: nuevosDatos.imagen,
                 descripcion: nuevosDatos.descripcion,
                 precio: nuevosDatos.precio,
+                categoria: nuevosDatos.categoria,
                 updateAt: new Date()
             },
             {

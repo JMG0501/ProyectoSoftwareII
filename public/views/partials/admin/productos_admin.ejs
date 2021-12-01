@@ -27,6 +27,12 @@
                                         </small>
                                     </p>
                                     <p class="card-text">
+                                        <span>Categoria: </span>
+                                        <span id="stock<%= prod %>">
+                                            <%= productoTienda[prod].categoria %>
+                                        </span>
+                                    </p>
+                                    <p class="card-text">
                                         <span>Stock Disponible: </span>
                                         <span id="stock<%= prod %>">
                                             <%= productoTienda[prod].stock %>
@@ -79,6 +85,15 @@
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Precio</label>
                                     <input type="number" class="form-control" id="inputPrecio" min="0" max="999">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Categoria</label>
+                                    <select class="form-select" aria-label="Default select example" id="inputCategoria">
+                                        <option value="Abarrotes">Abarrotes</option>
+                                        <option value="Aguas y Bebidas">Aguas y Bebidas</option>
+                                        <option value="Frutas y Verduras">Frutas y Verduras</option>
+                                        <option value="Galletas">Galletas</option>               
+                                    </select>
                                 </div>
                             </form>
         

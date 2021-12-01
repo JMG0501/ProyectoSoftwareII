@@ -118,11 +118,26 @@ const butAgregarProductoOnClick = (e) => {
                 montoTotal = montoTotal-parseInt(monto2);
                 subtotal.innerText = "Subtotal: S/. " + montoTotal + ".00";
             }
+            else
+            {
+                var filaProd = document.getElementById("filaProducto"+numID);
+                var padreFila = filaProd.parentNode;
+                padreFila.removeChild(filaProd);
+
+                var filaCard = document.getElementById("p"+numID);
+                var padreCard = filaCard.parentNode;
+                padreCard.removeChild(filaCard);
+
+                document.getElementById(idButton).style.display = "";
+
+                montoTotal = montoTotal-parseInt(monto2);
+                subtotal.innerText = "Subtotal: S/. " + montoTotal + ".00";
+            }
         }
 
         var butD2 = document.createElement("button");
         butD2.setAttribute("class", "btn text-white bgFirstColor btn me-2")
-        butD2.setAttribute("id", "butD" + numID)
+        butD2.setAttribute("id", "butD2" + numID)
         butD2.innerHTML = "-"
         butD2.onclick = function()
         {
@@ -135,6 +150,21 @@ const butAgregarProductoOnClick = (e) => {
                 prodCantidad.innerHTML = parseInt(prodCantidad.innerHTML) - 1;
                 prodCantidad2.innerHTML = parseInt(prodCantidad2.innerHTML) - 1;
                 montoParcial.innerText = parseInt(monto2)*parseInt(prodCantidad.innerHTML);
+                montoTotal = montoTotal-parseInt(monto2);
+                subtotal.innerText = "Subtotal: S/. " + montoTotal + ".00";
+            }
+            else
+            {
+                var filaProd = document.getElementById("filaProducto"+numID);
+                var padreFila = filaProd.parentNode;
+                padreFila.removeChild(filaProd);
+
+                var filaCard = document.getElementById("p"+numID);
+                var padreCard = filaCard.parentNode;
+                padreCard.removeChild(filaCard);
+
+                document.getElementById(idButton).style.display = "";
+
                 montoTotal = montoTotal-parseInt(monto2);
                 subtotal.innerText = "Subtotal: S/. " + montoTotal + ".00";
             }
@@ -162,7 +192,7 @@ const butAgregarProductoOnClick = (e) => {
 
         var butA2 = document.createElement("button");
         butA2.setAttribute("class", "btn text-white bgFirstColor btn ms-2")
-        butA2.setAttribute("id", "butA" + numID)
+        butA2.setAttribute("id", "butA2" + numID)
         butA2.innerHTML = "+"
         butA2.onclick = function()
         {
@@ -182,6 +212,8 @@ const butAgregarProductoOnClick = (e) => {
 
         document.getElementById(idButton).style.display = "none";
         var p1 = document.createElement("p");
+        p1.setAttribute("id", "p"+numID);
+
         p1.appendChild(butD2);
         p1.appendChild(span2);
         p1.appendChild(butA2);

@@ -32,6 +32,7 @@ const PedidoProductoDAO =
             lotesProductos.push({
                 idLote: object.idLote,
                 stockDisponible: object.stockDisponible,
+                stockVendido: object.stockVendido,
                 estado: object.estado
             })
         }
@@ -69,7 +70,7 @@ const PedidoProductoDAO =
                         const actulizacionStockD = await db.Lote_Producto.update(
                             {
                                 stockDisponible: nuevoStockDisponbile,
-                                stockVendido: salidaStock,
+                                stockVendido: parseInt(lotesProductos[index].stockVendido) + parseInt(salidaStock),
                                 updateAt: new Date()
                             },
                             {
