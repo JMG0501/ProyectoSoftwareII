@@ -94,6 +94,7 @@ const ProductoTiendaDAO =
             imagen: nuevoProducto.imagen,
             descripcion: nuevoProducto.descripcion,
             precio: nuevoProducto.precio,
+            categoria: nuevoProducto.categoria,
             createdAt : new Date(),
             updatedAt : new Date()
         }

@@ -105,6 +105,7 @@ const agregarProducto = async () =>
     const nuevaImagen = document.getElementById("inputImagenA").value;
     const nuevaDesc = document.getElementById("inputDescA").value;
     const nuevoPrecio = document.getElementById("inputPrecioA").value;
+    const nuevaCategoria = document.getElementById("inputCategoriaA").value;
     const idTiendaM = localStorage.getItem("idTienda");
     const validacionURL = /^(ftp|http|https):\/\/[^ "]+$/;
 
@@ -118,7 +119,8 @@ const agregarProducto = async () =>
             nombre: nuevoNombre,
             imagen: nuevaImagen,
             descripcion: nuevaDesc,
-            precio: nuevoPrecio
+            precio: nuevoPrecio,
+            categoria: nuevaCategoria
         }
     
         fetch(`http://localhost:3000/producto_tienda`, {
